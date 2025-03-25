@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher HomePage</title>
+    <link rel="stylesheet" href="./styles.css">      
+</head>
+<body>
+    <canvas id="stars" width="378" height="667"></canvas>
+    <canvas id="matrix" class="matrix" width="378" height="667"></canvas>
+    <header>
+        <img src="./photos/cipherlogo.jpg" alt="Cipher Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Article</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1 id="cipher-text">CIPHER <span class="styled-c">C</span>ONNECT.</h1>
+            <p class="tagline">BEYOND THE ALGORITHM</p>
+            <div class="buttons">
+                <a href="#"><button class="animated-btn">CIPHER.ORG</button></a>
+                <a href="#"><button class="animated-btn">SOCIALS</button></a>
+                <a href="#"><button class="animated-btn">HISTORY</button></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>// COPYRIGHT ©2025. ALL RIGHTS RESERVED</p>
+    </footer>
+    <script>
+        // Text animation effect
+        document.addEventListener("DOMContentLoaded", function() {
+            let text = document.getElementById("cipher-text");
+            text.style.opacity = "0";
+            text.style.transform = "translateY(-20px)";
+            setTimeout(() => {
+                text.style.transition = "opacity 1s ease, transform 1s ease";
+                text.style.opacity = "1";
+                text.style.transform = "translateY(0)";
+            }, 500);
+        });
+
+        // Button hover effect
+        let buttons = document.querySelectorAll(".animated-btn");
+        buttons.forEach(button => {
+            button.addEventListener("mouseover", () => {
+                button.style.backgroundColor = "white";
+                button.style.color = "black";
+            });
+            button.addEventListener("mouseout", () => {
+                button.style.backgroundColor = "transparent";
+                button.style.color = "white";
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+    canvas.id = "backgroundCanvas";
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // Star field
+    let stars = [];
+    for (let i = 0; i < 200; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2,
+            speed: Math.random() * 0.5 + 0.2
+        });
+    }
+
+    // Matrix rain
+    const matrixChars = "0101001001101101101110110011011";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawBackground() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw stars
+        ctx.fillStyle = "white";
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+            ctx.fill();
+            star.y += star.speed;
+            if (star.y > canvas.height) star.y = 0;
+        });
+
+        // Draw Matrix rain
+        ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
+        ctx.font = fontSize + "px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+
+        requestAnimationFrame(drawBackground);
+    }
+
+    drawBackground();
+});
+
+    </script>
+</body>
+</html>

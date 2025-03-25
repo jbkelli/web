@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url("photos/home.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: 95%;
+}
+
+.logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 300px;
+    opacity: 70%;
+}
+
+nav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+}
+
+nav ul li a:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 0 10%;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.hero h1 {
+    padding-top: 280px;
+    font-size: 80px;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.hero h1 .styled-c {
+    font-family: "Old English Text MT";
+    font-size: 150px;
+    color: aqua;
+    display: inline;
+    position: relative;
+    margin-right: 480px;
+    margin-bottom: -100px;
+    top: 0;
+}
+
+.hero h1 .connect {
+    display: inline;
+    position: relative;
+    left: 20px;
+}
+
+.tagline {
+    font-family: cursive;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    right: 10%;
+    top: 40%;
+}
+
+.buttons{
+    padding-top: 150px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+button{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    background: black;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+footer {
+    text-align: flex-start;
+    padding: 0px;
+    font-size: 18px;
+    padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 50px;
+    }
+    .styled-c {
+        font-size: 70px;
+    }
+    .hero h1 .connect {
+        left: 0;
+    }
+    .tagline {
+        text-align: center;
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-top: 10px;
+    }
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+}
